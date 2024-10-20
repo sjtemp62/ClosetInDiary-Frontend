@@ -1,4 +1,3 @@
-// OutfitTest.js - Component to test Outfit upload functionality
 import React, { useState } from 'react';
 import apiClient from './apiClient';
 
@@ -7,7 +6,7 @@ function OutfitTest() {
   const [category, setCategory] = useState("");
   const [folder, setFolder] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageSrc, setImageSrc] = useState(""); // 이미지를 표시할 src
   const [message, setMessage] = useState("");
   const [fileName, setFileName] = useState("");
   const [userOutfitList, setUserOutfitList] = useState([]);
@@ -27,7 +26,7 @@ function OutfitTest() {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((response) => {
+    .then(() => {
       setMessage("Upload successful!");
     })
     .catch((error) => {
@@ -36,10 +35,13 @@ function OutfitTest() {
     });
   };
 
+  // 서버로부터 이미지를 받아 Blob 형태로 변환 후 표시
   const handleGetImageUrl = () => {
-    apiClient.get(`/outfits/image/${fileName}`)
+    apiClient.get(`/outfits/image/${fileName}`, { responseType: 'blob' }) // 이미지 데이터로 받아옴
       .then((response) => {
-        setImageUrl(response.data);
+        const imageBlob = new Blob([response.data], { type: 'image/jpeg' }); // Blob으로 변환
+        const imageUrl = URL.createObjectURL(imageBlob); // Blob URL 생성
+        setImageSrc(imageUrl); // 이미지 src 업데이트
         setMessage("Image fetched successfully!");
       })
       .catch((error) => {
@@ -73,10 +75,10 @@ function OutfitTest() {
       <button onClick={handleGetImageUrl}>Get Image</button>
       <button onClick={handleGetUserOutfitList}>Get User Outfit List</button>
       {message && <p>{message}</p>}
-      {imageUrl && (
+      {imageSrc && (
         <div>
           <h3>Uploaded Image:</h3>
-          <img src={imageUrl} alt="Uploaded Outfit" width="300" />
+          <img src={imageSrc} alt="Uploaded Outfit" width="300" />
         </div>
       )}
       {userOutfitList.length > 0 && (
