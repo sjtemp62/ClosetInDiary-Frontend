@@ -35,7 +35,7 @@ function Dashboard() {
       <h2>Dashboard</h2>
       {userData ? (
         <div>
-          <p>Your email: {userData.email}</p>
+          <pre>{JSON.stringify(userData, null, 2)}</pre>
         </div>
       ) : (
         <p>Loading user data...</p>

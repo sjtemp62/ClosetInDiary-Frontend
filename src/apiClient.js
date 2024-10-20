@@ -59,24 +59,30 @@ apiClient.interceptors.response.use(
 
             return new Promise((resolve, reject) => {
                 const refreshToken = localStorage.getItem('refreshToken');
-                apiClient.post('/refresh-token', { refreshToken })
-                    .then(({data}) => {
-                        localStorage.setItem('accessToken', data.accessToken);
-                        apiClient.defaults.headers['Authorization'] = 'Bearer ' + data.accessToken;
-                        originalRequest.headers['Authorization'] = 'Bearer ' + data.accessToken;
-                        processQueue(null, data.accessToken);
-                        resolve(axios(originalRequest));
-                    })
-                    .catch((err) => {
-                        processQueue(err, null);
-                        localStorage.removeItem('accessToken');
-                        localStorage.removeItem('refreshToken');
-                        window.location.href = '/login';
-                        reject(err);
-                    })
-                    .finally(() => {
-                        isRefreshing = false;
-                    });
+
+                // 리프레시 토큰을 요청 헤더로 전달
+                apiClient.post('/refresh-token', null, {
+                    headers: {
+                        'Authorization': `Bearer ${refreshToken}`
+                    }
+                })
+                .then(({data}) => {
+                    localStorage.setItem('accessToken', data.accessToken);
+                    apiClient.defaults.headers['Authorization'] = 'Bearer ' + data.accessToken;
+                    originalRequest.headers['Authorization'] = 'Bearer ' + data.accessToken;
+                    processQueue(null, data.accessToken);
+                    resolve(axios(originalRequest));
+                })
+                .catch((err) => {
+                    processQueue(err, null);
+                    localStorage.removeItem('accessToken');
+                    localStorage.removeItem('refreshToken');
+                    window.location.href = '/login';
+                    reject(err);
+                })
+                .finally(() => {
+                    isRefreshing = false;
+                });
             });
         }
 

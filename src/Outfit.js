@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import apiClient from './apiClient';
+import { useNavigate } from 'react-router-dom';
 
 function OutfitTest() {
   const [file, setFile] = useState(null);
@@ -10,6 +11,16 @@ function OutfitTest() {
   const [message, setMessage] = useState("");
   const [fileName, setFileName] = useState("");
   const [userOutfitList, setUserOutfitList] = useState([]);
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    // 사용자가 인증되었는지 확인 후 인증되지 않았다면 로그인 페이지로 이동
+    const isAuthenticated = localStorage.getItem('accessToken');
+    if (!isAuthenticated) {
+      navigate('/login', { replace: true });
+      return;
+    }
+  }, [navigate]);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -26,13 +37,13 @@ function OutfitTest() {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then(() => {
-      setMessage("Upload successful!");
-    })
-    .catch((error) => {
-      console.error("Error uploading image:", error);
-      setMessage("Upload failed. Please try again.");
-    });
+      .then(() => {
+        setMessage("Upload successful!");
+      })
+      .catch((error) => {
+        console.error("Error uploading image:", error);
+        setMessage("Upload failed. Please try again.");
+      });
   };
 
   // 서버로부터 이미지를 받아 Blob 형태로 변환 후 표시

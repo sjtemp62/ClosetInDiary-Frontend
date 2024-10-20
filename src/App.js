@@ -6,30 +6,36 @@ import Login from './Login';
 import Signup from './Signup';
 import Home from './Home';
 import Dashboard from './Dashboard';
-// import Article from './Article';
 import ArticleList from './ArticleList';
 import Outfit from './Outfit';
+import DiariesPage from './DiariesPage';
+import CreateDiaryPage from './CreateDiaryPage';
+import DiaryDetailPage from './DiaryDetailPage';
 
 function App() {
   return (
     <Router>
       <nav>
         <ul>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/signup">Sign Up</Link></li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/article">Article-List</Link></li>
-          <li><Link to="/outfit">Outfit</Link></li>
+          <li><Link to="/login">로그인</Link></li>
+          <li><Link to="/signup">회원가입</Link></li>
+          <li><Link to="/">홈</Link></li>
+          <li><Link to="/dashboard">대시보드</Link></li>
+          <li><Link to="/article">기사 목록</Link></li>
+          <li><Link to="/outfit">착장</Link></li>
+          <li><Link to="/diaries">다이어리</Link></li>
         </ul>
       </nav>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/article" element={<ArticleList />}/>
-        <Route path="/outfit" element={<Outfit />}/>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/article" element={<ArticleList />} />
+        <Route path="/outfit" element={<Outfit />} />
+        <Route path="/diaries" element={<DiariesPage />} />
+        <Route path="/diaries/create" element={<CreateDiaryPage />} />
+        <Route path="/diaries/:id" element={<DiaryDetailPage />} />
       </Routes>
     </Router>
   );
