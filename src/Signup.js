@@ -1,4 +1,3 @@
-// Signup.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -7,6 +6,8 @@ import './App.css';
 const apiUrl = process.env.REACT_APP_API_URL;
 
 function Signup() {
+  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ function Signup() {
     e.preventDefault();
     try {
       const response = await axios.post(`${apiUrl}/api/signup`, {
+        username, // 추가된 필드
+        name,     // 추가된 필드
         email,
         password
       });
@@ -35,12 +38,44 @@ function Signup() {
             <p className="text-white-50 mt-2 mb-5">서비스 사용을 위한 회원 가입</p>
             <form onSubmit={handleSignup}>
               <div className="mb-3">
+                <label className="form-label text-white">Username</label>
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  value={username} 
+                  onChange={(e) => setUsername(e.target.value)} 
+                  required 
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label text-white">Name</label>
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  value={name} 
+                  onChange={(e) => setName(e.target.value)} 
+                  required 
+                />
+              </div>
+              <div className="mb-3">
                 <label className="form-label text-white">Email address</label>
-                <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input 
+                  type="email" 
+                  className="form-control" 
+                  value={email} 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  required 
+                />
               </div>
               <div className="mb-3">
                 <label className="form-label text-white">Password</label>
-                <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input 
+                  type="password" 
+                  className="form-control" 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  required 
+                />
               </div>
               <button type="submit" className="btn btn-primary">Submit</button>
             </form>
