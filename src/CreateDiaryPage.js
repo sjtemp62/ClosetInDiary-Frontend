@@ -4,6 +4,7 @@ import axios from './apiClient';
 import { useNavigate } from 'react-router-dom';
 
 const CreateDiaryPage = () => {
+    const [date, setDate] = useState('');
     const [emotion, setEmotion] = useState('');
     const [outfitIds, setOutfitIds] = useState('');
     const [content, setContent] = useState('');
@@ -21,7 +22,7 @@ const CreateDiaryPage = () => {
 
     const handleCreate = async () => {
         try {
-            await axios.post('/diaries', { emotion, outfitIds, content });
+            await axios.post('/diaries', { date, emotion, outfitIds, content });
             navigate('/diaries');
         } catch (err) {
             setError('다이어리를 생성하는 중 문제가 발생했습니다.');
@@ -32,6 +33,10 @@ const CreateDiaryPage = () => {
         <div>
             <h1>새 다이어리 작성</h1>
             {error && <p>{error}</p>}
+            <div>
+                <label>날짜: </label>
+                <input type="date" value={date} onChange={(e) => setDate(e.target.value)}></input>
+            </div>
             <div>
                 <label>감정: </label>
                 <input type="text" value={emotion} onChange={(e) => setEmotion(e.target.value)} />
