@@ -9,7 +9,7 @@ import Dashboard from './Dashboard';
 import ArticleList from './ArticleList';
 import Outfit from './Outfit';
 import DiariesPage from './DiariesPage';
-import CreateDiaryPage from './CreateDiaryPage';
+import DiaryCreatePage from './DiaryCreatePage';
 import DiaryDetailPage from './DiaryDetailPage';
 import Logout from './Logout';
 
@@ -53,7 +53,7 @@ function App() {
         <Route path="/article" element={<ArticleList />} />
         <Route path="/outfit" element={<Outfit />} />
         <Route path="/diaries" element={<DiariesPage />} />
-        <Route path="/diaries/create" element={<CreateDiaryPage />} />
+        <Route path="/diaries/create" element={<DiaryCreatePage />} />
         <Route path="/diaries/:id" element={<DiaryDetailPage />} />
         <Route path="/logout" element={<Logout onLogout={handleLogout} />} /> {/* onLogout 콜백 전달 */}
       </Routes>
