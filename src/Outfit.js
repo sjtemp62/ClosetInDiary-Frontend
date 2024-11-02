@@ -149,6 +149,7 @@ function Outfit() {
             <div key={item.id} className="card-outfit">
               <img src={item.imageUrl} alt="Outfit" className="card-image" />
               <div className="card-details">
+                <p><strong>fileName:</strong> {item.fileName}</p>
                 <p><strong>Category:</strong> {item.category}</p>
                 <p><strong>Folder:</strong> {item.folder}</p>
                 <p><strong>Description:</strong> {item.description}</p>
