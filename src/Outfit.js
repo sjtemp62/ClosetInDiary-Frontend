@@ -77,7 +77,9 @@ function Outfit() {
     if (file) formData.append("file", file);
 
     const request = editMode 
-      ? apiClient.put(`/outfits/${editOutfitId}`, formData)
+      ? apiClient.put(`/outfits/image/${editOutfitId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
       : apiClient.post(`/outfits/upload`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
