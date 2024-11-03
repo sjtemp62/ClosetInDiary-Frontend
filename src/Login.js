@@ -1,12 +1,10 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './App.css';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-function Login() {
+function Login({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -25,6 +23,7 @@ function Login() {
       localStorage.setItem('refreshToken', refreshToken);
 
       console.log('Login successful: ');
+      onLogin(); // 로그인 상태 업데이트
       navigate('/'); // 로그인 성공 시 홈으로 이동
     } catch (error) {
       console.error('Login error:', error);

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from './apiClient';
 import { useNavigate } from 'react-router-dom';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import './DiariesPage.css'; // 스타일 파일 추가
 
 const DiariesPage = () => {
     const [diaries, setDiaries] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const navigate = useNavigate();
 
     useEffect(() => {
-        // 사용자가 인증되었는지 확인 후 인증되지 않았다면 로그인 페이지로 이동
         const isAuthenticated = localStorage.getItem('accessToken');
         if (!isAuthenticated) {
             navigate('/login', { replace: true });
@@ -34,24 +37,41 @@ const DiariesPage = () => {
         navigate('/diaries/create');
     };
 
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
+    const selectedDateDiaries = diaries.filter(
+        (diary) => diary.date === formatDate(selectedDate)
+    );
+
     if (loading) return <p>로딩 중...</p>;
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
+        <div className="diaries-page-container">
             <h1>다이어리 목록</h1>
-            <button onClick={handleCreateDiary}>새 다이어리 작성</button>
-            {diaries.length > 0 ? (
+            <button onClick={handleCreateDiary} className="create-button">새 다이어리 작성</button>
+            <Calendar onChange={handleDateChange} value={selectedDate} />
+            <h2>{formatDate(selectedDate)}의 다이어리</h2>
+            {selectedDateDiaries.length > 0 ? (
                 <ul>
-                    {diaries.map(diary => (
+                    {selectedDateDiaries.map((diary) => (
                         <li key={diary.id} onClick={() => navigate(`/diaries/${diary.id}`)}>
-                            <h3>{diary.date} - {diary.emotion}</h3>
+                            <h3>{diary.emotion}</h3>
                             <p>{diary.content.slice(0, 100)}...</p>
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p>다이어리가 없습니다.</p>
+                <p>해당 날짜에 작성된 다이어리가 없습니다.</p>
             )}
         </div>
     );

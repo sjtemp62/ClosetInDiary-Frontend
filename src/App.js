@@ -1,3 +1,5 @@
+// App.js
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Login from './Login';
@@ -7,8 +9,9 @@ import Dashboard from './Dashboard';
 import ArticleList from './ArticleList';
 import Outfit from './Outfit';
 import DiariesPage from './DiariesPage';
-import CreateDiaryPage from './CreateDiaryPage';
+import DiaryCreatePage from './DiaryCreatePage';
 import DiaryDetailPage from './DiaryDetailPage';
+import Logout from './Logout';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,12 +20,11 @@ function App() {
     const accessToken = localStorage.getItem('accessToken');
     setIsLoggedIn(!!accessToken);
   }, []);
-
+  
   const handleLogout = () => {
-    localStorage.removeItem('accessToken');
     setIsLoggedIn(false);
-    // Move navigate logic to a child component or use Navigate component
   };
+
 
   return (
     <Router>
@@ -34,7 +36,7 @@ function App() {
             <Link to="/article" className="nav-link">기사 목록</Link>
             <Link to="/outfit" className="nav-link">착장</Link>
             <Link to="/diaries" className="nav-link">다이어리</Link>
-            <button onClick={handleLogout} className="nav-link logout-button">로그아웃</button>
+            <Link to="/logout" className="nav-link logout-button">로그아웃</Link>
           </>
         ) : (
           <>
@@ -44,15 +46,16 @@ function App() {
         )}
       </nav>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/article" element={<ArticleList />} />
         <Route path="/outfit" element={<Outfit />} />
         <Route path="/diaries" element={<DiariesPage />} />
-        <Route path="/diaries/create" element={<CreateDiaryPage />} />
+        <Route path="/diaries/create" element={<DiaryCreatePage />} />
         <Route path="/diaries/:id" element={<DiaryDetailPage />} />
+        <Route path="/logout" element={<Logout onLogout={handleLogout} />} /> {/* onLogout 콜백 전달 */}
       </Routes>
     </Router>
   );

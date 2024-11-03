@@ -1,0 +1,45 @@
+.diary-create-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.outfit-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.outfit-item {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border 0.3s ease;
+}
+
+.outfit-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.outfit-item.selected {
+    border-color: #4caf50; /* 선택되었을 때 테두리 색상 */
+}
+
+.submit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}

@@ -1,111 +1,197 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import apiClient from './apiClient';
 import { useNavigate } from 'react-router-dom';
+import UploadModal from './UploadModal'; 
+import './Outfit.css';
 
-function OutfitTest() {
+function Outfit() {
   const [file, setFile] = useState(null);
   const [category, setCategory] = useState("");
   const [folder, setFolder] = useState("");
   const [description, setDescription] = useState("");
-  const [imageSrc, setImageSrc] = useState(""); // 이미지를 표시할 src
-  const [message, setMessage] = useState("");
-  const [fileName, setFileName] = useState("");
   const [userOutfitList, setUserOutfitList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    // 사용자가 인증되었는지 확인 후 인증되지 않았다면 로그인 페이지로 이동
-    const isAuthenticated = localStorage.getItem('accessToken');
-    if (!isAuthenticated) {
-      navigate('/login', { replace: true });
-      return;
-    }
-  }, [navigate]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editMode, setEditMode] = useState(false); // 수정 모드 상태
+  const [editOutfitId, setEditOutfitId] = useState(null); // 수정할 항목 ID
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
+  const itemsPerPage = 6;
 
-  const handleUpload = () => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("category", category);
-    formData.append("folder", folder);
-    formData.append("description", description);
-    apiClient.post(`/outfits/upload`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
-      .then(() => {
-        setMessage("Upload successful!");
-      })
-      .catch((error) => {
-        console.error("Error uploading image:", error);
-        setMessage("Upload failed. Please try again.");
-      });
-  };
-
-  // 서버로부터 이미지를 받아 Blob 형태로 변환 후 표시
-  const handleGetImageUrl = () => {
-    apiClient.get(`/outfits/image/${fileName}`, { responseType: 'blob' }) // 이미지 데이터로 받아옴
-      .then((response) => {
-        const imageBlob = new Blob([response.data], { type: 'image/jpeg' }); // Blob으로 변환
-        const imageUrl = URL.createObjectURL(imageBlob); // Blob URL 생성
-        setImageSrc(imageUrl); // 이미지 src 업데이트
-        setMessage("Image fetched successfully!");
-      })
-      .catch((error) => {
-        console.error("Error fetching image:", error);
-        setMessage("Failed to fetch image. Please try again.");
-      });
-  };
-
-  const handleGetUserOutfitList = () => {
+  const handleGetUserOutfitList = useCallback(() => {
     apiClient.get(`/outfits/list`)
-      .then((response) => {
-        setUserOutfitList(response.data);
+      .then(async (response) => {
+        const outfits = response.data;
+        const outfitsWithImages = await Promise.all(outfits.map(async (outfit) => {
+          const imageUrl = await fetchImage(outfit.id);
+          return { ...outfit, imageUrl };
+        }));
+        setUserOutfitList(outfitsWithImages);
         setMessage("User outfit list fetched successfully!");
       })
       .catch((error) => {
         console.error("Error fetching user outfit list:", error);
         setMessage("Failed to fetch user outfit list. Please try again.");
       });
+  }, []);
+
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem('accessToken');
+    if (!isAuthenticated) {
+      navigate('/login', { replace: true });
+      return;
+    }
+    handleGetUserOutfitList();
+  }, [navigate, handleGetUserOutfitList]);
+
+  const handleOpenModal = () => {
+    setEditMode(false); // 추가 모드로 열기
+    setIsModalOpen(true);
+  };
+
+  const handleEdit = (outfit) => {
+    setEditMode(true); // 수정 모드로 전환
+    setEditOutfitId(outfit.id);
+    setCategory(outfit.category);
+    setFolder(outfit.folder);
+    setDescription(outfit.description);
+    setIsModalOpen(true); 
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false); 
+    setFile(null);
+    setCategory("");
+    setFolder("");
+    setDescription("");
+    setEditMode(false);
+    setEditOutfitId(null);
+  };
+
+  const handleSave = () => {
+    const formData = new FormData();
+    formData.append("category", category);
+    formData.append("folder", folder);
+    formData.append("description", description);
+    if (file) formData.append("file", file);
+
+    const request = editMode 
+      ? apiClient.put(`/outfits/image/${editOutfitId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      : apiClient.post(`/outfits/upload`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+
+    request
+      .then(() => {
+        setMessage(editMode ? "Update successful!" : "Upload successful!");
+        handleGetUserOutfitList();
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error("Error saving outfit:", error);
+        setMessage("Save failed. Please try again.");
+      });
+  };
+
+  const fetchImage = async (id) => {
+    try {
+      const response = await apiClient.get(`/outfits/image/${id}`, {
+        responseType: 'blob',
+      });
+      return URL.createObjectURL(response.data);
+    } catch (error) {
+      console.error("Error fetching image:", error);
+      return "";
+    }
+  };
+
+  const handleDelete = (id) => {
+    apiClient.delete(`/outfits/image/${id}`)
+      .then(() => {
+        setMessage("Outfit deleted successfully!");
+        handleGetUserOutfitList();
+      })
+      .catch((error) => {
+        console.error("Error deleting outfit:", error);
+        setMessage("Failed to delete outfit. Please try again.");
+      });
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = userOutfitList.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handleNextPage = () => {
+    if (currentPage < Math.ceil(userOutfitList.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   return (
-    <div>
+    <div className="outfit-test-container">
       <h2>Outfit Upload Test</h2>
-      <input type="file" onChange={handleFileChange} />
-      <input type="text" placeholder="Category" value={category} onChange={(e) => setCategory(e.target.value)} />
-      <input type="text" placeholder="Folder" value={folder} onChange={(e) => setFolder(e.target.value)} />
-      <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-      <button onClick={handleUpload}>Upload Outfit</button>
-      <br />
-      <input type="text" placeholder="File Name to Fetch" value={fileName} onChange={(e) => setFileName(e.target.value)} />
-      <button onClick={handleGetImageUrl}>Get Image</button>
-      <button onClick={handleGetUserOutfitList}>Get User Outfit List</button>
+      <button onClick={handleOpenModal}>Upload New Outfit</button>
       {message && <p>{message}</p>}
-      {imageSrc && (
-        <div>
-          <h3>Uploaded Image:</h3>
-          <img src={imageSrc} alt="Uploaded Outfit" width="300" />
+
+      <h3>User Outfit List</h3>
+      {userOutfitList.length > 0 ? (
+        <div className="card-container">
+          {currentItems.map((item) => (
+            <div key={item.id} className="card-outfit">
+              <img src={item.imageUrl} alt="Outfit" className="card-image" />
+              <div className="card-details">
+                <p><strong>fileName:</strong> {item.fileName}</p>
+                <p><strong>Category:</strong> {item.category}</p>
+                <p><strong>Folder:</strong> {item.folder}</p>
+                <p><strong>Description:</strong> {item.description}</p>
+              </div>
+              <div className="card-actions">
+                <button onClick={() => handleEdit(item)}>Edit</button>
+                <button onClick={() => handleDelete(item.id)}>Delete</button>
+              </div>
+            </div>
+          ))}
         </div>
+      ) : (
+        <p>No outfits found.</p>
       )}
-      {userOutfitList.length > 0 && (
-        <div>
-          <h3>User Outfit List:</h3>
-          <ul>
-            {userOutfitList.map((url, index) => (
-              <li key={index}>
-                <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>Page {currentPage}</span>
+        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(userOutfitList.length / itemsPerPage)}>
+          Next
+        </button>
+      </div>
+
+      {isModalOpen && (
+        <UploadModal
+          onClose={handleCloseModal}
+          onSave={handleSave}
+          file={file}
+          setFile={setFile}
+          category={category}
+          setCategory={setCategory}
+          folder={folder}
+          setFolder={setFolder}
+          description={description}
+          setDescription={setDescription}
+          editMode={editMode}
+        />
       )}
     </div>
   );
 }
 
-export default OutfitTest;
+export default Outfit;
