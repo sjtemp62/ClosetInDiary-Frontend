@@ -1,4 +1,3 @@
-// Dashboard.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiClient from './apiClient'; // 설정된 apiClient를 가져옵니다.
@@ -31,10 +30,10 @@ function Dashboard() {
   }, [navigate]);
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container centered-container">
       <h2>Dashboard</h2>
       {userData ? (
-        <div>
+        <div className="user-data">
           <pre>{JSON.stringify(userData, null, 2)}</pre>
         </div>
       ) : (

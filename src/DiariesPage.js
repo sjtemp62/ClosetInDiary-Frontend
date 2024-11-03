@@ -10,6 +10,7 @@ const DiariesPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false); // 달력 열림 상태 추가
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -39,6 +40,7 @@ const DiariesPage = () => {
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
+        setIsCalendarOpen(false); // 날짜 선택 시 달력을 접음
     };
 
     const formatDate = (date) => {
@@ -46,6 +48,10 @@ const DiariesPage = () => {
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
+    };
+
+    const toggleCalendar = () => {
+        setIsCalendarOpen(!isCalendarOpen);
     };
 
     const selectedDateDiaries = diaries.filter(
@@ -59,7 +65,18 @@ const DiariesPage = () => {
         <div className="diaries-page-container">
             <h1>다이어리 목록</h1>
             <button onClick={handleCreateDiary} className="create-button">새 다이어리 작성</button>
-            <Calendar onChange={handleDateChange} value={selectedDate} />
+            
+            {/* 날짜 표시 */}
+            <div onClick={toggleCalendar} className="selected-date">
+                <h2>{formatDate(selectedDate)}</h2>
+                <p>날짜를 클릭하여 달력을 펼치거나 접을 수 있습니다.</p>
+            </div>
+            
+            {/* 조건부 렌더링으로 달력 표시 */}
+            {isCalendarOpen && (
+                <Calendar onChange={handleDateChange} value={selectedDate} />
+            )}
+
             <h2>{formatDate(selectedDate)}의 다이어리</h2>
             {selectedDateDiaries.length > 0 ? (
                 <ul>

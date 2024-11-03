@@ -1,20 +1,28 @@
 .diaries-page-container {
-    max-width: 600px;
+    max-width: 800px; /* 너비를 약간 넓게 설정하여 콘텐츠가 더 넓게 보이도록 합니다 */
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 20px;
+    border: 1px solid #ddd; /* 살짝 테두리를 추가해 시각적인 구분 */
+    border-radius: 10px; /* 컨테이너의 모서리를 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 추가 */
 }
 
 .create-button {
-    margin-bottom: 15px;
-    padding: 10px 20px;
+    margin-bottom: 20px; /* 버튼과 다른 요소 간의 간격을 조금 넓힘 */
+    padding: 12px 24px; /* 버튼의 패딩을 더해 크기를 조금 키움 */
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* 배경색 전환 애니메이션 추가 */
 }
 
 .create-button:hover {
     background-color: #0056b3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* hover 시 버튼에 그림자 추가 */
 }
