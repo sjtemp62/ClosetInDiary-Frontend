@@ -11,6 +11,7 @@ import DiariesPage from './DiariesPage';
 import DiaryCreatePage from './DiaryCreatePage';
 import DiaryDetailPage from './DiaryDetailPage';
 import Logout from './Logout';
+import FriendsPage from './FriendsPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,6 +36,7 @@ function App() {
             <Link to="/article" className="nav-link">기사 목록</Link>
             <Link to="/outfit" className="nav-link">착장</Link>
             <Link to="/diaries" className="nav-link">다이어리</Link>
+            <Link to="/friends" className="nav-link">친구</Link>
             <Link to="/logout" className="nav-link logout-button">로그아웃</Link>
           </>
         ) : (
@@ -55,6 +57,7 @@ function App() {
         <Route path="/diaries/create" element={<DiaryCreatePage />} />
         <Route path="/diaries/:id" element={<DiaryDetailPage />} />
         <Route path="/logout" element={<Logout onLogout={handleLogout} />} /> {/* onLogout 콜백 전달 */}
+        <Route path="/friends" element={<FriendsPage />} />
       </Routes>
     </Router>
   );
