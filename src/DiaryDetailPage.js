@@ -110,6 +110,16 @@ const DiaryDetailPage = () => {
         }
     };
 
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`/diaries/${id}`);
+            navigate('/diaries'); // 삭제 후 목록 페이지로 이동
+        } catch (err) {
+            console.error('Error deleting diary:', err);
+            setError('다이어리 삭제 중 문제가 발생했습니다.');
+        }
+    };
+
     const handleImageSelect = (imageId) => {
         setSelectedImages((prevSelected) =>
             prevSelected.includes(imageId)
@@ -171,6 +181,9 @@ const DiaryDetailPage = () => {
                         <p>{diary.content}</p>
                         <button onClick={handleEditToggle} className="edit-button">
                             수정
+                        </button>
+                        <button onClick={handleDelete} className="delete-button">
+                            삭제
                         </button>
                     </>
                 )}
