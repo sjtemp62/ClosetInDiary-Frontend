@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  border-radius: 10%;
 }
 
 .App-link {
@@ -55,12 +56,16 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  background-color: #b0e0e6; /* 하늘색에 가까운 파스텔톤 */
+  background-color: #fff; /* 하늘색에 가까운 파스텔톤 */
   padding: 1rem;
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 15px;
+  left: 2.5%;
+  width: 95%;
   z-index: 1000;
+  border-radius: 50px 50px 50px 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 }
 
 .nav-link {
@@ -90,7 +95,8 @@
 }
 
 body {
-  padding-top: calc(2rem + 40px);
+  padding-top: calc(2rem + 60px);
+  background-color: #f3f3f3;
 }
 
 .centered-container {
