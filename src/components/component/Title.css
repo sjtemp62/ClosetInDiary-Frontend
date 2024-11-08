@@ -1,0 +1,20 @@
+.title {
+    height: 48px;
+    position: relative;
+    width: 665px;
+  }
+  
+  .title .text-wrapper {
+    color: #000000;
+    font-family: "Pretendard-SemiBold", Helvetica;
+    font-size: 40px;
+    font-weight: 600;
+    height: 48px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: -1px;
+    width: 665px;
+  }
+  

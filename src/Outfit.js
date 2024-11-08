@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import apiClient from './apiClient';
+import apiClient from './components/hooks/apiClient';
 import { useNavigate } from 'react-router-dom';
 import UploadModal from './UploadModal'; 
 import './Outfit.css';

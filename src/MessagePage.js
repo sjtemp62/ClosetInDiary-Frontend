@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from './apiClient'; // Axios 인스턴스 설정 파일
+import axios from './components/hooks/apiClient'; // Axios 인스턴스 설정 파일
 import { useNavigate } from 'react-router-dom';
 import './MessagePage.css'; // 스타일 파일 추가
 

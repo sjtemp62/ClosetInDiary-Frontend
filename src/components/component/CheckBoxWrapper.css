@@ -1,0 +1,30 @@
+.box {
+    height: 154px;
+    width: 675px;
+    position: absolute;
+  }
+  
+  /* .box .overlap-group-wrapper {
+    border: 1px dashed;
+    border-color: #7b61ff;
+    border-radius: 5px;
+    height: 154px;
+    left: 0;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    width: 675px;
+  } */
+  
+  .box .overlap-group {
+    height: 64px;
+    position: relative;
+    width: 643px;
+  }
+  
+  .box .property-check-box {
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+  }
+  

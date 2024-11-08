@@ -1,10 +1,10 @@
 // App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Login from './Login';
-import Signup from './Signup';
+import SignIn from './components/signup/SignIn';
+import Login from './components/login/Login';
+import Dashboard from './components/dashboard/Dashboard'
 import Home from './Home';
-import Dashboard from './Dashboard';
 import ArticleList from './ArticleList';
 import Outfit from './Outfit';
 import DiariesPage from './DiariesPage';
@@ -51,7 +51,7 @@ function App() {
       </nav>
       <Routes>
         <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<SignIn />} />
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/article" element={<ArticleList />} />

@@ -1,0 +1,33 @@
+.property-check-box-wrapper {
+  align-items: flex-start;
+  display: inline-flex;
+  gap: 8px;
+  padding: 8px 8px 8px 0px;
+  position: relative;
+  cursor: pointer; /* 클릭할 수 있음을 명확히 보여줍니다 */
+}
+
+.property-check-box-wrapper .check-box {
+  height: 24px !important;
+  width: 24px !important;
+  position: relative !important;
+}
+
+.property-check-box-wrapper .i-want-to-receive {
+  color: #333333;
+  font-family: "Poppins", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.property-check-box-wrapper .check-box-1-line {
+  width: fit-content;
+}
+
+.property-check-box-wrapper .check-box-2-lines {
+  width: 603px;
+}

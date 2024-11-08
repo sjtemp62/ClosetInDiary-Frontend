@@ -1,0 +1,220 @@
+.login {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .login .div-2 {
+    background-color: #ffffff;
+    height: 1024px;
+    overflow: hidden;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .login .header-instance {
+    left: -1px !important;
+    position: absolute !important;
+    top: -1px !important;
+  }
+  
+  .login .log-in {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 80px;
+    left: 387px;
+    position: absolute;
+    top: 242px;
+  }
+  
+  .login .log-in-boxes {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .login .title-instance {
+    width: 645px !important;
+  }
+  
+  .login .log-in-inputs-check {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+  }
+  
+  .login .log-in-inputs {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .login .text-field-wrapper {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .login .text-field {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .login .label {
+    align-self: stretch;
+    background: transparent;
+    border: none;
+    color: #666666;
+    font-family: "Pretendard", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    height: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1.00px;
+    padding: 0;
+    position: relative;
+  }
+  
+  .login .text-field-2 {
+    align-self: stretch;
+    border: 1px solid;
+    border-color: #66666659;
+    border-radius: 12px;
+    height: 56px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .login .label-2 {
+    align-self: stretch;
+    color: #666666;
+    font-family: "Pretendard", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    height: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1.00px;
+    position: relative;
+  }
+  
+  .login .remember-me {
+    align-items: flex-start;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: -7px;
+    padding: 1px 10px;
+    position: relative;
+    width: 180px;
+  }
+  
+  .login .design-component-instance-node {
+    align-self: stretch !important;
+    display: flex !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+  }
+  
+  .login .button-under {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 45px;
+    position: relative;
+    width: 665px;
+  }
+  
+  .login .button-instance {
+    align-self: stretch !important;
+    border-radius: 35.5px !important;
+    height: 71px !important;
+    width: 100% !important;
+  }
+
+  .login .form-btn {
+    width: 100%;
+  }
+  
+  .login .text {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 65px;
+    position: relative;
+    width: 283px;
+  }
+  
+  .login .text-wrapper-2 {
+    align-self: stretch;
+    color: #111111;
+    font-family: "Pretendard", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1.00px;
+    position: relative;
+    text-align: center;
+    text-decoration: underline;
+  }
+  
+  .login .don-t-have-an {
+    align-self: stretch;
+    color: transparent;
+    font-family: "Pretendard", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+  }
+  
+  .login .span {
+    color: #333333;
+  }
+  
+  .login .text-wrapper-3 {
+    color: #666666;
+  }
+  
+  .login .text-wrapper-4 {
+    color: #111111;
+    font-family: "Pretendard", Helvetica;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+  

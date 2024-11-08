@@ -1,0 +1,32 @@
+.button {
+  all: unset;
+  align-items: center;
+  border-radius: 16px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 10px;
+  height: 64px;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+  width: 168px;
+}
+
+.button .text-wrapper {
+  color: #ffffff;
+  font-family: "Pretendard", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  width: fit-content;
+}
+
+.button.default {
+  background-color: #c3c3c3;
+}
+
+.button.available {
+  background-color: #111111;
+}

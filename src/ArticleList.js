@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import apiClient from './apiClient';
+import apiClient from './components/hooks/apiClient';
 
 function ArticleList() {
   const [articles, setArticles] = useState([]);
