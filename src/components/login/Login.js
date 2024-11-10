@@ -28,7 +28,7 @@ const Login = ({ onLogin }) => {
               <div className="log-in-inputs">
                 <div className="text-field-wrapper">
                   <div className="text-field">
-                  <label className="label-2" htmlFor="input-3">
+                    <label className="label-2" htmlFor="input-3">
                       Email address
                     </label>
                     <input
@@ -37,6 +37,7 @@ const Login = ({ onLogin }) => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleLogin(e)}
                       required
                     />
                   </div>
@@ -52,6 +53,7 @@ const Login = ({ onLogin }) => {
                       className="text-field-2"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleLogin(e)}
                       required
                     />
                   </div>

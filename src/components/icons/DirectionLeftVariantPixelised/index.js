@@ -1,0 +1,1 @@
+export { DirectionLeftVariantPixelised } from "./DirectionLeftVariantPixelised";

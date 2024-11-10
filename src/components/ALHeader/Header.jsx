@@ -29,16 +29,19 @@ export const Header = ({ className }) => {
             className="menu-components-instance"
             shape="/img/shape-5.svg"
             text="CLOSET"
+            onClick={() => navigate('/closet')} // Closet 클릭 시 /closet 경로로 이동
           />
           <MenuComponents
             className="menu-components-instance"
             shape="/img/shape-5.svg"
             text="DIARY"
+            onClick={() => navigate('/diaries')} // Diary 클릭 시 /diaries 경로로 이동
           />
           <MenuComponents
             className="menu-components-instance"
             shape="/img/shape-5.svg"
             text="FRIENDS"
+            onClick={() => navigate('/friends')} // Friends 클릭 시 /friends 경로로 이동
           />
         </div>
       </div>

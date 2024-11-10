@@ -14,5 +14,5 @@ export const ClosetCategory = ({ selected, className, text = "Add New", onClick 
 ClosetCategory.propTypes = {
   selected: PropTypes.oneOf(["when-selected", "not-selected"]),
   text: PropTypes.string,
-  onClick: PropTypes.func, // onClick 이벤트 Prop 추가
+  onClick: PropTypes.func,
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ClosetCategory } from "../../components/ClosetCategory";
 import { FrameOfClothes } from "../../components/FrameOfClothes";
@@ -6,12 +6,14 @@ import { Header } from "../../components/ALHeader";
 import { useCategorySelection } from "../../components/hooks/useCategorySelection";
 import "./style.css";
 import { useAuth } from '../../App';
+import { AddNewItem } from "../../components/AddNewItem/AddNewItem";
 
 export const Closet = () => {
   // 커스텀 훅을 사용하여 선택 상태와 클릭 핸들러를 가져옵니다.
   const { selectedCategory, handleCategoryClick, images } = useCategorySelection();
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -19,6 +21,21 @@ export const Closet = () => {
       return;
     }
   });
+  // `Add New` 클릭 시 모달 열림 상태로 설정
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleCategoryClickWithCondition = (text) => {
+    if (text === "Add New") {
+      openModal(); // 모달 열기
+    } else {
+      handleCategoryClick(text); // 일반 카테고리 처리 (서버 요청 등)
+    }
+  };
+  
+  const handleUploadSuccess = () => {
+    // 업로드 후 이미지 갱신 로직 추가 가능
+  };
 
   // div-3에 적용할 클래스를 동적으로 설정
   const divClassName = images.length === 0 ? "div-3 no-images" : "div-3";
@@ -37,18 +54,18 @@ export const Closet = () => {
 
             <div className="div-4">
               <div className="frame-6">
-                <ClosetCategory
+              <ClosetCategory
                   className="closet-category-instance"
-                  selected={selectedCategory === "AddNew" ? "when-selected" : "not-selected"}
+                  selected={selectedCategory === "Add New" ? "when-selected" : "not-selected"}
                   text="Add New"
-                  onClick={() => handleCategoryClick("AddNew")}
+                  onClick={() => handleCategoryClickWithCondition("Add New")}
                 />
                 <div className="overlap-group">
                   <ClosetCategory
                     className="closet-category-instance"
                     selected={selectedCategory === "All" ? "when-selected" : "not-selected"}
                     text="All"
-                    onClick={() => handleCategoryClick("All")}
+                    onClick={() => handleCategoryClickWithCondition("All")}
                   />
                   <img className="image-2" alt="All" src="/img/image-4-1.png" />
                 </div>
@@ -57,7 +74,7 @@ export const Closet = () => {
                     className="closet-category-instance"
                     selected={selectedCategory === "Tops" ? "when-selected" : "not-selected"}
                     text="Tops"
-                    onClick={() => handleCategoryClick("Tops")}
+                    onClick={() => handleCategoryClickWithCondition("Tops")}
                   />
                   <img className="image-2" alt="Tops" src="/img/image-5.png" />
                 </div>
@@ -67,7 +84,7 @@ export const Closet = () => {
                     className="closet-category-instance"
                     selected={selectedCategory === "Dresses" ? "when-selected" : "not-selected"}
                     text="Dresses"
-                    onClick={() => handleCategoryClick("Dresses")}
+                    onClick={() => handleCategoryClickWithCondition("Dresses")}
                   />
                   <img className="image" alt="Dresses" src="/img/image-6-1.png" />
                 </div>
@@ -76,7 +93,7 @@ export const Closet = () => {
                     className="closet-category-instance"
                     selected={selectedCategory === "Pants" ? "when-selected" : "not-selected"}
                     text="Pants"
-                    onClick={() => handleCategoryClick("Pants")}
+                    onClick={() => handleCategoryClickWithCondition("Pants")}
                   />
                   <img className="image" alt="Pants" src="/img/image-9.png" />
                 </div>
@@ -88,7 +105,7 @@ export const Closet = () => {
                     className="closet-category-instance"
                     selected={selectedCategory === "Skirts" ? "when-selected" : "not-selected"}
                     text="Skirts"
-                    onClick={() => handleCategoryClick("Skirts")}
+                    onClick={() => handleCategoryClickWithCondition("Skirts")}
                   />
                   <img
                     className="image"
@@ -101,7 +118,7 @@ export const Closet = () => {
                     className="closet-category-instance"
                     selected={selectedCategory === "Outerwear" ? "when-selected" : "not-selected"}
                     text="Outerwear"
-                    onClick={() => handleCategoryClick("Outerwear")}
+                    onClick={() => handleCategoryClickWithCondition("Outerwear")}
                   />
                   <img className="image" alt="Outerwear" src="/img/image-8.png" />
                 </div>
@@ -109,19 +126,19 @@ export const Closet = () => {
                   className="closet-category-3"
                   selected={selectedCategory === "Shoes" ? "when-selected" : "not-selected"}
                   text="Shoes"
-                  onClick={() => handleCategoryClick("Shoes")}
+                  onClick={() => handleCategoryClickWithCondition("Shoes")}
                 />
                 <ClosetCategory
                   className="closet-category-4"
                   selected={selectedCategory === "Bags" ? "when-selected" : "not-selected"}
                   text="Bags"
-                  onClick={() => handleCategoryClick("Bags")}
+                  onClick={() => handleCategoryClickWithCondition("Bags")}
                 />
                 <ClosetCategory
                   className="design-component-instance-node"
                   selected={selectedCategory === "Accessory" ? "when-selected" : "not-selected"}
                   text="Accessory"
-                  onClick={() => handleCategoryClick("Accessory")}
+                  onClick={() => handleCategoryClickWithCondition("Accessory")}
                 />
               </div>
               <img className="image" alt="AddNew" src="/img/image-1.png" />
@@ -259,6 +276,8 @@ export const Closet = () => {
 
           <img className="line-3" alt="Line" src="/img/line-15.svg" />
         </footer>
+
+        {isModalOpen && <AddNewItem closeModal={closeModal} />}
       </div>
     </div>
   );

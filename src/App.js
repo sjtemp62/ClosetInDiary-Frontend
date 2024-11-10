@@ -4,6 +4,7 @@ import SignIn from './components/signup/SignIn';
 import Login from './components/login/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import ArticleList from './ArticleList';
+import { DiarySpecityThe } from './screens/DiarySpecityThe/DiarySpecityThe';
 import DiariesPage from './DiariesPage';
 import DiaryCreatePage from './DiaryCreatePage';
 import DiaryDetailPage from './DiaryDetailPage';
@@ -67,7 +68,7 @@ function App() {
           />
           <Route
             path="/diaries"
-            element={isLoggedIn ? <DiariesPage /> : <Navigate to="/login" />}
+            element={isLoggedIn ? <DiarySpecityThe /> : <Navigate to="/login" />}
           />
           <Route
             path="/diaries/create"
@@ -91,7 +92,7 @@ function App() {
           />
           
           {/* 기본 경로 */}
-          <Route path="/" element={isLoggedIn ? <Closet /> : <Login />} />
+          <Route path="/" element={isLoggedIn ? <Closet /> : <Login onLogin={handleLogin} />} />
         </Routes>
       </Router>
     </AuthContext.Provider>

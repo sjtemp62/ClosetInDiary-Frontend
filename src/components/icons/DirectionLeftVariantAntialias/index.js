@@ -1,0 +1,1 @@
+export { DirectionLeftVariantAntialias } from "./DirectionLeftVariantAntialias";

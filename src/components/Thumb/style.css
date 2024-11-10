@@ -1,0 +1,86 @@
+.thumb {
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.thumb .v-spacer {
+  font-family: "Roboto", Helvetica;
+  font-size: 4px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+}
+
+.thumb.horizontal-false {
+  align-items: flex-start;
+  display: flex;
+}
+
+.thumb.horizontal-true {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.thumb.hidden-false {
+  background-color: #c1c1c1;
+}
+
+.thumb.mac.horizontal-false {
+  width: 8px;
+}
+
+.thumb.hidden-false.mac {
+  border-radius: 4px;
+}
+
+.thumb.hidden-true.windows {
+  background-color: #f1f1f1;
+}
+
+.thumb.mac.hidden-true {
+  background-color: #fafafa;
+}
+
+.thumb.mac.horizontal-true {
+  height: 8px;
+}
+
+.thumb.horizontal-true.windows {
+  height: 13px;
+}
+
+.thumb.horizontal-false.windows {
+  width: 13px;
+}
+
+.thumb.horizontal-false .v-spacer {
+  margin-top: -1.00px;
+  width: 13px;
+}
+
+.thumb.horizontal-true .v-spacer {
+  width: fit-content;
+}
+
+.thumb.hidden-false .v-spacer {
+  color: #c1c1c1;
+}
+
+.thumb.mac.horizontal-false .v-spacer {
+  margin-right: -5.00px;
+}
+
+.thumb.hidden-true.windows .v-spacer {
+  color: #f1f1f1;
+}
+
+.thumb.hidden-true.horizontal-false .v-spacer {
+  color: #f1f1f1;
+}
+
+.thumb.mac.hidden-true.horizontal-true .v-spacer {
+  color: #fafafa;
+}

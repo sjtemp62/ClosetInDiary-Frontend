@@ -1,0 +1,59 @@
+.daily-look-list {
+  height: 559px;
+  position: relative;
+  width: 360px;
+}
+
+.daily-look-list .dailylook-box {
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  height: 485px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 360px;
+}
+
+.daily-look-list .ellipse {
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  height: 30px;
+  left: 326px;
+  position: absolute;
+  top: 496px;
+  width: 30px;
+}
+
+.daily-look-list .frame {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  left: 5px;
+  position: absolute;
+  top: 503px;
+  width: 203px;
+}
+
+.daily-look-list .element {
+  align-self: stretch;
+  color: #4e4e4e;
+  font-family: "Pretendard-Medium", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 18px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.daily-look-list .text-wrapper {
+  align-self: stretch;
+  color: #222222;
+  font-family: "Pretendard-Medium", Helvetica;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 18px;
+  position: relative;
+}

@@ -1,0 +1,168 @@
+.scrollbar .div {
+  align-items: flex-start;
+  display: inline-flex;
+  left: 15px;
+  position: absolute;
+  top: 2px;
+}
+
+.scrollbar .thumb-instance {
+  flex: 0 0 auto !important;
+}
+
+.scrollbar .arrow {
+  height: 7px !important;
+  left: 6px !important;
+  position: absolute !important;
+  top: 5px !important;
+  width: 7px !important;
+}
+
+.scrollbar .direction-right-variant-pixelised {
+  height: 7px !important;
+  left: 79px !important;
+  position: absolute !important;
+  top: 5px !important;
+  width: 7px !important;
+}
+
+.scrollbar .frame-2 {
+  align-items: flex-start;
+  display: inline-flex;
+}
+
+.scrollbar .class {
+  color: #000000 !important;
+}
+
+.scrollbar .direction-up-variant-pixelised {
+  height: 7px !important;
+  left: 5px !important;
+  position: absolute !important;
+  top: 6px !important;
+  width: 7px !important;
+}
+
+.scrollbar .class-2 {
+  left: 2px !important;
+  position: absolute !important;
+  top: 33px !important;
+}
+
+.scrollbar .class-3 {
+  left: 2px !important;
+  position: absolute !important;
+  top: 53px !important;
+}
+
+.scrollbar .class-4 {
+  left: 2px !important;
+  position: absolute !important;
+  top: 14px !important;
+}
+
+.scrollbar .class-5 {
+  left: 4px !important;
+  top: 1px !important;
+}
+
+.scrollbar .class-6 {
+  left: 33px !important;
+  top: 4px !important;
+}
+
+.scrollbar .class-7 {
+  left: 66px !important;
+  top: 4px !important;
+}
+
+.scrollbar .class-8 {
+  left: 4px !important;
+  top: 32px !important;
+}
+
+.scrollbar .class-9 {
+  left: 4px !important;
+  top: 64px !important;
+}
+
+.scrollbar .class-10 {
+  left: 15px !important;
+  position: absolute !important;
+  top: 2px !important;
+}
+
+.scrollbar .class-11 {
+  left: 33px !important;
+  position: absolute !important;
+  top: 2px !important;
+}
+
+.scrollbar .class-12 {
+  left: 52px !important;
+  position: absolute !important;
+  top: 2px !important;
+}
+
+.scrollbar .class-13 {
+  left: 1px !important;
+  top: 4px !important;
+}
+
+.scrollbar.OS-0-windows {
+  background-color: #f1f1f1;
+  position: relative;
+}
+
+.scrollbar.horizontal-1-true {
+  width: 92px;
+}
+
+.scrollbar.OS-0-mac {
+  background-color: #fafafa;
+}
+
+.scrollbar.OS-0-mac.horizontal-1-false {
+  box-shadow: inset -1px 0px 0px #f0f0f0, inset 1px 0px 0px #e8e8e8;
+  height: 90px;
+  width: 15px;
+}
+
+.scrollbar.OS-0-mac.horizontal-1-true {
+  box-shadow: inset 0px -1px 0px #f0f0f0, inset 0px 1px 0px #e8e8e8;
+  height: 15px;
+}
+
+.scrollbar.horizontal-1-true.OS-0-windows {
+  height: 17px;
+}
+
+.scrollbar.horizontal-1-false.OS-0-windows {
+  height: 92px;
+  width: 17px;
+}
+
+.scrollbar.OS-0-windows .frame-2 {
+  left: 2px;
+  position: absolute;
+}
+
+.scrollbar.horizontal-1-true .frame-2 {
+  top: 4px;
+}
+
+.scrollbar.OS-0-mac .frame-2 {
+  position: relative;
+}
+
+.scrollbar.horizontal-1-false .frame-2 {
+  flex-direction: column;
+}
+
+.scrollbar.OS-0-mac.horizontal-1-false .frame-2 {
+  left: 4px;
+}
+
+.scrollbar.horizontal-1-false.OS-0-windows .frame-2 {
+  top: 15px;
+}
