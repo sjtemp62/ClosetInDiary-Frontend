@@ -1,0 +1,1 @@
+export { ClosetCategory } from "./ClosetCategory";

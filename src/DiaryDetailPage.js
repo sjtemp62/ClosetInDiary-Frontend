@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from './components/hooks/apiClient';
+import axios from './api/apiClient';
 import { useParams, useNavigate } from 'react-router-dom';
 import './DiaryDetailPage.css';
 

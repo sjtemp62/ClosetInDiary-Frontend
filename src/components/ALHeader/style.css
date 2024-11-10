@@ -1,0 +1,90 @@
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 1785px;
+}
+
+.header .frame {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 76px;
+  position: relative;
+}
+
+.header .vector {
+  height: 59px;
+  position: relative;
+  width: 79px;
+}
+
+.header .div {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 71px;
+  position: relative;
+}
+
+.header .menu-components-instance {
+  flex: 0 0 auto !important;
+}
+
+.header .frame-2 {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 83px;
+  position: relative;
+}
+
+.header .frame-3 {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 61px;
+  position: relative;
+}
+
+.header .div-2 {
+  color: #000000;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.header .frame-4 {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 91px;
+}
+
+.header .search {
+  height: 38px;
+  position: relative;
+  width: 38px;
+}
+
+.header .img {
+  height: 19px;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  width: 19px;
+}
+
+.header .notifications {
+  height: 20px;
+  position: relative;
+  width: 16px;
+}

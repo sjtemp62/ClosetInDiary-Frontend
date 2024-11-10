@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from './components/hooks/apiClient'; // Axios 인스턴스 설정 파일
+import axios from './api/apiClient'; // Axios 인스턴스 설정 파일
 import { useParams } from 'react-router-dom';
 import './SendMessage.css'; // 스타일 파일 추가
 
@@ -11,7 +11,7 @@ const SendMessage = () => {
     const handleSendMessage = async () => {
         if (!message) return;
         try {
-            const response = await axios.post('/message/send', {
+            await axios.post('/message/send', {
                 receiver: friendId,
                 content: message,
             });

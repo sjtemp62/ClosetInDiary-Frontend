@@ -1,12 +1,9 @@
-// App.js
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React, { useState, useEffect, createContext, useContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import SignIn from './components/signup/SignIn';
 import Login from './components/login/Login';
-import Dashboard from './components/dashboard/Dashboard'
-import Home from './Home';
+import Dashboard from './components/dashboard/Dashboard';
 import ArticleList from './ArticleList';
-import Outfit from './Outfit';
 import DiariesPage from './DiariesPage';
 import DiaryCreatePage from './DiaryCreatePage';
 import DiaryDetailPage from './DiaryDetailPage';
@@ -14,57 +11,90 @@ import Logout from './Logout';
 import FriendsPage from './FriendsPage';
 import MessagePage from './MessagePage';
 import SendMessage from './SendMessage';
+import { Closet } from "./screens/Closet";
+
+// Create a context for authentication
+const AuthContext = createContext();
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('accessToken'));
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
     setIsLoggedIn(!!accessToken);
   }, []);
-  
-  const handleLogout = () => {
-    setIsLoggedIn(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
   };
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+  };
+
+  const value = {
+    isLoggedIn,
+    handleLogin,
+    handleLogout,
+  };
 
   return (
-    <Router>
-      <nav className="navbar">
-        <Link to="/" className="nav-link">홈</Link>
-        {isLoggedIn ? (
-          <>
-            <Link to="/dashboard" className="nav-link">대시보드</Link>
-            <Link to="/article" className="nav-link">기사 목록</Link>
-            <Link to="/outfit" className="nav-link">착장</Link>
-            <Link to="/diaries" className="nav-link">다이어리</Link>
-            <Link to="/friends" className="nav-link">친구</Link>
-            <Link to="/messages" className="nav-link">쪽지</Link>
-            <Link to="/logout" className="nav-link logout-button">로그아웃</Link>
-          </>
-        ) : (
-          <>
-            <Link to="/login" className="nav-link small-link">로그인</Link>
-            <Link to="/signup" className="nav-link small-link">회원가입</Link>
-          </>
-        )}
-      </nav>
-      <Routes>
-        <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
-        <Route path="/signup" element={<SignIn />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/article" element={<ArticleList />} />
-        <Route path="/outfit" element={<Outfit />} />
-        <Route path="/diaries" element={<DiariesPage />} />
-        <Route path="/diaries/create" element={<DiaryCreatePage />} />
-        <Route path="/diaries/:id" element={<DiaryDetailPage />} />
-        <Route path="/logout" element={<Logout onLogout={handleLogout} />} /> {/* onLogout 콜백 전달 */}
-        <Route path="/friends" element={<FriendsPage />} />
-        <Route path="/messages" element={<MessagePage/>} />
-        <Route path="/send-message/:friendId" element={<SendMessage />} />
-      </Routes>
-    </Router>
+    <AuthContext.Provider value={value}>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/signup" element={<SignIn />} />
+          <Route path="/logout" element={<Logout onLogout={handleLogout} />} />
+          
+          {/* 보호된 라우트 */}
+          <Route
+            path="/dashboard"
+            element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/article"
+            element={isLoggedIn ? <ArticleList /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/closet"
+            element={isLoggedIn ? <Closet /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/diaries"
+            element={isLoggedIn ? <DiariesPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/diaries/create"
+            element={isLoggedIn ? <DiaryCreatePage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/diaries/:id"
+            element={isLoggedIn ? <DiaryDetailPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/friends"
+            element={isLoggedIn ? <FriendsPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/messages"
+            element={isLoggedIn ? <MessagePage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/send-message/:friendId"
+            element={isLoggedIn ? <SendMessage /> : <Navigate to="/login" />}
+          />
+          
+          {/* 기본 경로 */}
+          <Route path="/" element={isLoggedIn ? <Closet /> : <Login />} />
+        </Routes>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 

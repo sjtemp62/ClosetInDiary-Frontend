@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../component/Button";
-import { Header } from "../component/Header";
+import { Header } from "../LSHeader/Header";
 import Title from "../component/Title";
 import "./SignIn.css";
 import { useSignup } from "../hooks/useSignup";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import apiClient from '../hooks/apiClient';
+import apiClient from '../../api/apiClient';
 import './Dashboard.css'; // 추가된 CSS 파일 import
 
 function Dashboard() {

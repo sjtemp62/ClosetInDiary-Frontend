@@ -29,16 +29,6 @@
   color: #61dafb;
 }
 
-/* styles.css */
-
-/* .gradient-custom-signup {
-  background: linear-gradient(to right, rgba(254, 238, 229, 1), rgba(229, 193, 197, 1));
-}
-
-.gradient-custom-login {
-  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-} */
-
 .card-custom {
   border-radius: 1rem;
 }
@@ -50,53 +40,6 @@
 
 .text-white-50 {
   color: rgba(255, 255, 255, 0.5) !important;
-}
-
-.navbar {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  background-color: #fff; /* 하늘색에 가까운 파스텔톤 */
-  padding: 1rem;
-  position: fixed;
-  top: 15px;
-  left: 2.5%;
-  width: 95%;
-  z-index: 1000;
-  border-radius: 50px 50px 50px 50px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-}
-
-.nav-link {
-  color: #333;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.small-link {
-  font-size: 0.9rem;
-}
-
-.nav-link:hover {
-  color: #4169e1; /* Hover 색상 */
-}
-
-.logout-button {
-  background: none;
-  border: none;
-  color: #333;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.logout-button:hover {
-  color: #ff6347;
-}
-
-body {
-  padding-top: calc(2rem + 60px);
-  background-color: #f3f3f3;
 }
 
 .centered-container {

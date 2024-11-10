@@ -1,0 +1,14 @@
+.frame-of-clothes {
+  border: 1px solid;
+  border-color: #000000;
+  height: 470px;
+  width: 317px;
+  position: relative; /* 부모 요소가 크기를 정의합니다 */
+}
+
+.clothing-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 프레임에 꽉 차도록 설정 */
+  position: absolute;
+}

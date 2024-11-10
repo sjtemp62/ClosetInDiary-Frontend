@@ -1,0 +1,495 @@
+.closet {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.closet .div-3 {
+  background-color: #ffffff;
+  position: relative;
+  width: 1920px;
+}
+
+.closet .header-instance {
+  background-color: transparent !important;
+  left: 67px !important;
+  position: absolute !important;
+  top: 77px !important;
+}
+
+.closet .overlap {
+  height: 422px;
+  left: 222px;
+  position: absolute;
+  top: 213px;
+  width: 1509px;
+}
+
+.closet .frame-5 {
+  height: 422px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1509px;
+}
+
+.closet .frame-wrapper {
+  height: 65px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 352px;
+}
+
+.closet .div-wrapper {
+  align-items: center;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  border-color: #111111;
+  display: flex;
+  gap: 10px;
+  padding: 15px 0px;
+  position: relative;
+  width: 352px;
+}
+
+.closet .text-wrapper {
+  color: #111111;
+  font-family: "Pretendard-SemiBold", Helvetica;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 35px;
+  margin-top: -5.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.closet .div-4 {
+  height: 320px;
+  left: 0;
+  position: absolute;
+  top: 102px;
+  width: 1509px;
+}
+
+.closet .frame-6 {
+  height: 150px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1509px;
+}
+
+.closet .closet-category-instance {
+  left: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.closet .overlap-group {
+  height: 150px;
+  left: 303px;
+  position: absolute;
+  top: 0;
+  width: 289px;
+}
+
+.closet .image {
+  height: 80px;
+  left: 105px;
+  object-fit: cover;
+  position: absolute;
+  top: 22px;
+  width: 80px;
+  pointer-events: none
+}
+
+.closet .overlap-group-2 {
+  height: 150px;
+  left: 606px;
+  position: absolute;
+  top: 0;
+  width: 289px;
+}
+
+.closet .image-2 {
+  height: 80px;
+  left: 109px;
+  object-fit: cover;
+  position: absolute;
+  top: 22px;
+  width: 80px;
+  pointer-events: none
+}
+
+.closet .overlap-group-3 {
+  height: 150px;
+  left: 909px;
+  position: absolute;
+  top: 0;
+  width: 289px;
+}
+
+.closet .design-component-instance-node {
+  left: 1212px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.closet .frame-7 {
+  height: 150px;
+  left: 0;
+  position: absolute;
+  top: 170px;
+  width: 1509px;
+}
+
+.closet .closet-category-2 {
+  left: 303px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.closet .closet-category-3 {
+  left: 606px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.closet .closet-category-4 {
+  left: 909px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.closet .category {
+  height: 320px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1509px;
+}
+
+.closet .image-3 {
+  height: 75px;
+  left: 105px;
+  object-fit: cover;
+  position: absolute;
+  top: 22px;
+  width: 75px;
+  pointer-events: none
+}
+
+.closet .overlap-2 {
+  height: 150px;
+  left: 1212px;
+  position: absolute;
+  top: 0;
+  width: 289px;
+}
+
+.closet .overlap-3 {
+  height: 150px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 289px;
+}
+
+.closet .image-4 {
+  height: 80px;
+  left: 715px;
+  object-fit: cover;
+  position: absolute;
+  top: 192px;
+  width: 80px;
+  pointer-events: none
+}
+
+.closet .image-5 {
+  height: 80px;
+  left: 1014px;
+  object-fit: cover;
+  position: absolute;
+  top: 192px;
+  width: 80px;
+  pointer-events: none
+}
+
+.closet .image-6 {
+  height: 80px;
+  left: 1317px;
+  object-fit: cover;
+  position: absolute;
+  top: 192px;
+  width: 80px;
+  pointer-events: none
+}
+
+.closet .row-of-clothes {
+  align-items: center;
+  display: inline-flex;
+  left: 0;
+  position: absolute;
+  top: 795px;
+}
+
+.closet .frame-8 {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.closet .frame-of-clothes-closet {
+  position: relative !important;
+}
+
+.closet .row-of-clothes-2 {
+  align-items: center;
+  display: inline-flex;
+  left: 0;
+  position: absolute;
+  top: 1265px;
+}
+
+.closet .row-of-clothes-3 {
+  align-items: center;
+  display: inline-flex;
+  left: 0;
+  position: absolute;
+  top: 1735px;
+}
+
+.closet .footer {
+  background-color: #ffffff;
+  height: 562px;
+  left: 0;
+  position: absolute;
+  top: 2695px;
+  width: 1920px;
+}
+
+.closet .vector-2 {
+  height: 89px;
+  left: 256px;
+  position: absolute;
+  top: 123px;
+  width: 136px;
+}
+
+.closet .sitemap {
+  height: 218px;
+  left: 688px;
+  position: absolute;
+  top: 111px;
+  width: 72px;
+}
+
+.closet .flexcontainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 170px;
+  left: 1px;
+  position: absolute;
+  top: 48px;
+  width: 67px;
+}
+
+.closet .text-i {
+  align-self: stretch;
+  color: var(--dark);
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 22px;
+  opacity: 0.75;
+  position: relative;
+}
+
+.closet .span {
+  color: #09132e;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 22px;
+}
+
+.closet .text-wrapper-2 {
+  color: var(--dark);
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 28px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.closet .socials {
+  height: 181px;
+  left: 923px;
+  position: absolute;
+  top: 111px;
+  width: 68px;
+}
+
+.closet .flexcontainer-i {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 133px;
+  left: 1px;
+  position: absolute;
+  top: 48px;
+  width: 63px;
+}
+
+.closet .head-office {
+  height: 110px;
+  left: 1378px;
+  position: absolute;
+  top: 111px;
+  width: 306px;
+}
+
+.closet .p {
+  color: var(--dark);
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 15px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 22px;
+  opacity: 0.75;
+  position: absolute;
+  top: 48px;
+  width: 302px;
+}
+
+.closet .newsletter {
+  height: 91px;
+  left: 1378px;
+  position: absolute;
+  top: 238px;
+  width: 330px;
+}
+
+.closet .line {
+  height: 1px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 90px;
+  width: 326px;
+}
+
+.closet .text-wrapper-3 {
+  color: var(--dark);
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 22px;
+  opacity: 0.7;
+  position: absolute;
+  top: 51px;
+  white-space: nowrap;
+}
+
+.closet .mail-icon {
+  height: 17px;
+  left: 302px;
+  position: absolute;
+  top: 54px;
+  width: 24px;
+}
+
+.closet .element-ST-all-rights {
+  color: var(--dark);
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  left: 1378px;
+  letter-spacing: 0;
+  line-height: 20px;
+  opacity: 0.6;
+  position: absolute;
+  top: 423px;
+  white-space: nowrap;
+}
+
+.closet .text-wrapper-4 {
+  color: var(--dark);
+  font-family: "Pretendard-Light", Helvetica;
+  font-size: 18px;
+  font-weight: 300;
+  left: 891px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: justify;
+  top: 410px;
+  white-space: nowrap;
+}
+
+.closet .line-2 {
+  height: 1px;
+  left: 891px;
+  object-fit: cover;
+  position: absolute;
+  top: 444px;
+  width: 127px;
+}
+
+.closet .text-wrapper-5 {
+  color: var(--dark);
+  font-family: "Pretendard-Light", Helvetica;
+  font-size: 18px;
+  font-weight: 300;
+  left: 232px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: justify;
+  top: 411px;
+  white-space: nowrap;
+}
+
+.closet .line-3 {
+  height: 1px;
+  left: 233px;
+  object-fit: cover;
+  position: absolute;
+  top: 445px;
+  width: 183px;
+}
+
+html, body {
+  background-color: #ffffff;
+}
+
+.closet .text-wrapper-6 {
+  color: #111111;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  left: 710px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  top: 1055px;
+  white-space: nowrap;
+}

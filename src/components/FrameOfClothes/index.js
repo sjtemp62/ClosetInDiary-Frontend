@@ -1,0 +1,1 @@
+export { FrameOfClothes } from "./FrameOfClothes";

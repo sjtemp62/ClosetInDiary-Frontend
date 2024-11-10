@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '../component/Button';
 import CheckBoxWrapper from '../component/CheckBoxWrapper';
-import { Header } from '../component/Header';
+import { Header } from '../LSHeader/Header';
 import Title from '../component/Title';
 import { Link } from 'react-router-dom';
 import { useLogin } from '../hooks/useLogin'; // 커스텀 훅 import

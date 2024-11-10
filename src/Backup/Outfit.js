@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import apiClient from './components/hooks/apiClient';
+import apiClient from '../api/apiClient';
 import { useNavigate } from 'react-router-dom';
-import UploadModal from './UploadModal'; 
+import UploadModal from '../UploadModal'; 
 import './Outfit.css';
 
 function Outfit() {
