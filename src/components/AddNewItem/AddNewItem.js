@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import "./AddNewItem.css";
+import apiClient from "../../api/apiClient";
 
-export const AddNewItem = ({ closeModal }) => {
+export const AddNewItem = ({ closeModal, onUploadSuccess }) => {
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
-  const [category, setCategory] = useState(""); // 선택된 카테고리를 저장하는 상태
-
-  // 파일이 변경되었을 때 호출되는 함수
+  const [category, setCategory] = useState("");
+  const [folder, setFolder] = useState(""); // 폴더 이름을 저장하는 상태
+  const [description, setDescription] = useState(""); // 설명을 저장하는 상태
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
 
-    // 파일이 선택된 경우 미리보기 URL 생성
     if (selectedFile) {
       const preview = URL.createObjectURL(selectedFile);
       setPreviewUrl(preview);
     } else {
-      setPreviewUrl(null); // 파일이 없으면 미리보기 URL 제거
+      setPreviewUrl(null);
     }
   };
 
-  // 미리보기 URL 해제 (메모리 정리)
   const handleModalClose = () => {
     if (previewUrl) {
       URL.revokeObjectURL(previewUrl);
@@ -28,7 +27,27 @@ export const AddNewItem = ({ closeModal }) => {
     closeModal();
   };
 
-  // 카테고리 목록
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("category", category);
+    formData.append("folder", folder);
+    formData.append("description", description);
+
+    apiClient.post(`/closet/upload`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+    .then(() => {
+      alert("Upload successful!");
+      onUploadSuccess(); // 업로드 성공 시 호출
+      handleModalClose();
+    })
+    .catch((error) => {
+      console.error("Error saving outfit:", error);
+      alert("Save failed. Please try again.");
+    });
+  };
+
   const categoryOptions = [
     "Tops", "Dresses", "Pants", "Skirts", "Outerwear", "Shoes", "Bags", "Accessory"
   ];
@@ -37,9 +56,8 @@ export const AddNewItem = ({ closeModal }) => {
     <div className="modal-overlay">
       <div className="modal-content">
         <h2>Add New Item</h2>
-        
-        {/* 카테고리 선택 드롭다운 */}
-        <select 
+
+        <select
           className="modal-input"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -52,19 +70,30 @@ export const AddNewItem = ({ closeModal }) => {
           ))}
         </select>
 
-        <input type="text" placeholder="Folder" className="modal-input" />
-        <input type="text" placeholder="Description" className="modal-input" />
+        <input
+          type="text"
+          placeholder="Folder"
+          className="modal-input"
+          value={folder}
+          onChange={(e) => setFolder(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          className="modal-input"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
 
-        {/* 파일 선택 인풋 */}
         <input type="file" onChange={handleFileChange} className="modal-input" />
-        
-        {/* 파일 미리보기 */}
+
         {previewUrl && (
           <div className="image-preview">
             <img src={previewUrl} alt="Preview" className="preview-image" />
           </div>
         )}
-        
+
+        <button onClick={handleUpload} className="modal-upload-button">Upload</button>
         <button onClick={handleModalClose} className="modal-close-button">Close</button>
       </div>
     </div>

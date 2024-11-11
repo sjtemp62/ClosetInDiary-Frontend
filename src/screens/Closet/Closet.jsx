@@ -34,7 +34,7 @@ export const Closet = () => {
   };
   
   const handleUploadSuccess = () => {
-    // 업로드 후 이미지 갱신 로직 추가 가능
+    handleCategoryClick(selectedCategory); // 업로드 성공 후 현재 카테고리의 이미지 갱신
   };
 
   // div-3에 적용할 클래스를 동적으로 설정
@@ -277,7 +277,7 @@ export const Closet = () => {
           <img className="line-3" alt="Line" src="/img/line-15.svg" />
         </footer>
 
-        {isModalOpen && <AddNewItem closeModal={closeModal} />}
+        {isModalOpen && <AddNewItem closeModal={closeModal} onUploadSuccess={handleUploadSuccess} />}
       </div>
     </div>
   );
