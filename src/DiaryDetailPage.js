@@ -50,7 +50,7 @@ const DiaryDetailPage = () => {
 
         const fetchOutfits = async () => {
             try {
-                const response = await axios.get('/outfits/list');
+                const response = await axios.get('/closet/All');
                 const outfitsWithImages = await Promise.all(
                     response.data.map(async (outfit) => {
                         const imageUrl = await fetchImage(outfit.id);
@@ -69,7 +69,7 @@ const DiaryDetailPage = () => {
 
     const fetchImage = async (id) => {
         try {
-            const response = await axios.get(`/outfits/image/${id}`, {
+            const response = await axios.get(`/closet/image/${id}`, {
                 responseType: 'blob',
             });
             return URL.createObjectURL(response.data);

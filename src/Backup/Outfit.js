@@ -20,7 +20,7 @@ function Outfit() {
   const itemsPerPage = 6;
 
   const handleGetUserOutfitList = useCallback(() => {
-    apiClient.get(`/outfits/list`)
+    apiClient.get(`/closet/All`)
       .then(async (response) => {
         const outfits = response.data;
         const outfitsWithImages = await Promise.all(outfits.map(async (outfit) => {
@@ -77,10 +77,10 @@ function Outfit() {
     if (file) formData.append("file", file);
 
     const request = editMode 
-      ? apiClient.put(`/outfits/image/${editOutfitId}`, formData, {
+      ? apiClient.put(`/closet/image/${editOutfitId}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
-      : apiClient.post(`/outfits/upload`, formData, {
+      : apiClient.post(`/closet/upload`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
@@ -98,7 +98,7 @@ function Outfit() {
 
   const fetchImage = async (id) => {
     try {
-      const response = await apiClient.get(`/outfits/image/${id}`, {
+      const response = await apiClient.get(`/closet/image/${id}`, {
         responseType: 'blob',
       });
       return URL.createObjectURL(response.data);
@@ -109,7 +109,7 @@ function Outfit() {
   };
 
   const handleDelete = (id) => {
-    apiClient.delete(`/outfits/image/${id}`)
+    apiClient.delete(`/closet/image/${id}`)
       .then(() => {
         setMessage("Outfit deleted successfully!");
         handleGetUserOutfitList();

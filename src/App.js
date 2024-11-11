@@ -12,6 +12,7 @@ import Logout from './Logout';
 import FriendsPage from './FriendsPage';
 import MessagePage from './MessagePage';
 import SendMessage from './SendMessage';
+import Outfit from './Backup/Outfit'
 import { Closet } from "./screens/Closet";
 
 // Create a context for authentication
@@ -89,6 +90,14 @@ function App() {
           <Route
             path="/send-message/:friendId"
             element={isLoggedIn ? <SendMessage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/backup/outfit"
+            element={isLoggedIn ? <Outfit /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/backup/diaries"
+            element={isLoggedIn ? <DiariesPage /> : <Navigate to="/login" />}
           />
           
           {/* 기본 경로 */}
